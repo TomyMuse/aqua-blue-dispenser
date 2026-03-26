@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqua Blue | Dispenser de Agua Directo a Red Premium</title>
+    <meta name="description" content="Descubrí la pureza de Aqua Blue. Ofrecemos el mejor dispenser de agua directo a red y sistemas sin bidón para oficinas y hogares con instalación bonificada.">
+    <meta name="keywords" content="dispenser de agua, dispenser de agua directo a red, dispenser sin bidon, purificador de agua, agua pura oficina, aqua blue dispensers">
+    <link rel="canonical" href="https://aquablue.com.ar" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Aqua Blue | Dispenser de Agua Directo a Red">
+    <meta property="og:description" content="Agua potable infinita sin logística de bidones. Conocé nuestros dispensers de conexión directa.">
+    <meta property="og:image" content="https://i.postimg.cc/jR5CB7j3/Chat-GPT-Image-1-feb-2026-13-18-22.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+        }
+        .font-brand {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .water-drops {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/water-drops.png');
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes float3d {
+            0%, 100% { transform: translateY(0) rotateY(-8deg) rotateX(2deg); }
+            50% { transform: translateY(-15px) rotateY(8deg) rotateX(-2deg); }
+        }
+
+        .animate-dispenser-3d {
+            animation: float3d 8s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        .gold-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .gold-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 45%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 55%
+            );
+            animation: shimmer 4s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translate(-30%, -30%); }
+            100% { transform: translate(30%, 30%); }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "three": "https://esm.sh/three@^0.182.0",
+    "clsx": "https://esm.sh/clsx@^2.1.1",
+    "tailwind-merge": "https://esm.sh/tailwind-merge@^3.4.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body id="dynamic-body" class="antialiased overflow-x-hidden">
+    <div class="water-drops"></div>
+    <div id="root"></div>
+    <!-- Vite inyectará automáticamente el script de entrada en desarrollo -->
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

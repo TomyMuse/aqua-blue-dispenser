@@ -1,0 +1,103 @@
+
+import React, { useState, useEffect } from 'react';
+import { Droplet, Menu, X } from 'lucide-react';
+import { CONTACT_INFO } from '../constants';
+
+const Navbar: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks: { name: string; href: string; isExternal?: boolean }[] = [
+    { name: 'Inicio', href: '#inicio' },
+    { name: 'Características', href: '#caracteristicas' },
+    { name: 'Producto', href: '#producto' },
+    { name: 'Contacto', href: CONTACT_INFO.whatsappLink, isExternal: true },
+  ];
+
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass py-3 shadow-sm border-b border-sky-100/50' : 'bg-transparent py-5'}`}>
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        <div className="flex items-center space-x-2 group cursor-pointer">
+          <div className="relative">
+            <Droplet className="w-8 h-8 text-sky-500 transition-transform duration-300 group-hover:scale-110" fill="currentColor" />
+            <div className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-sky-300 rounded-full animate-pulse shadow-sm"></div>
+          </div>
+          <span className="text-2xl font-brand font-extrabold tracking-tight text-slate-900">
+            AQUA <span className="text-sky-500">BLUE</span>
+          </span>
+        </div>
+
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center space-x-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              target={link.isExternal ? "_blank" : undefined}
+              rel={link.isExternal ? "noopener noreferrer" : undefined}
+              className="text-sm font-bold uppercase tracking-widest transition-colors duration-300 hover:text-sky-600 text-slate-600"
+            >
+              {link.name}
+            </a>
+          ))}
+          <a 
+            href={CONTACT_INFO.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-slate-900 hover:bg-black text-white px-8 py-3 rounded-xl font-bold transition-all active:scale-95 shadow-lg shadow-slate-200/50 text-xs tracking-[0.15em] uppercase block"
+          >
+            Solicitar Demo
+          </a>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden">
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="text-slate-900 p-2">
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden glass absolute top-full left-0 right-0 py-8 px-6 space-y-5 animate-in fade-in slide-in-from-top-4 duration-300 border-b border-slate-200 shadow-2xl">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              target={link.isExternal ? "_blank" : undefined}
+              rel={link.isExternal ? "noopener noreferrer" : undefined}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block text-lg font-bold text-slate-900 border-b border-slate-100 pb-3"
+            >
+              {link.name}
+            </a>
+          ))}
+          <a 
+            href={CONTACT_INFO.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="block w-full bg-slate-900 text-white py-4 rounded-xl font-bold shadow-lg uppercase tracking-widest text-xs text-center"
+          >
+            Solicitar Demo
+          </a>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
