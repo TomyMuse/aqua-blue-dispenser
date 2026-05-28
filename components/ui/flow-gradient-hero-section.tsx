@@ -69,7 +69,7 @@ class GradientBackground {
     this.uniforms = {
       uTime: { value: 0 },
       uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-      // Aqua Blue Celeste Palette
+      // Prisma Dispensers Celeste Palette
       uColor1: { value: new THREE.Vector3(0.0, 0.45, 0.75) }, // Sky Blue
       uColor2: { value: new THREE.Vector3(0.5, 0.85, 1.0) },  // Celeste
       uColor3: { value: new THREE.Vector3(0.1, 0.6, 0.9) },   // Water Blue

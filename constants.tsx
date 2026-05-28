@@ -1,15 +1,31 @@
-
 import React from 'react';
-import { ShieldCheck, Settings, Zap, Thermometer, Droplets, Banknote } from 'lucide-react';
+import { ShieldCheck, Thermometer, Droplets, Banknote } from 'lucide-react';
 import { Feature, ProductSpec } from './types';
 
 export const CONTACT_INFO = {
-  whatsapp: "1141813171",
-  whatsappLink: "https://wa.me/541141813171",
-  email: "aqua.blue.contacto1015@gmail.com",
-  instagram: "aqua.blue.eco",
-  instagramLink: "https://instagram.com/aqua.blue.eco"
+  whatsapp: "1141813071",
+  whatsappLink: "https://wa.me/541141813071",
+  email: "prismadispensers.contacto@gmail.com",
+  instagram: "prisma.dispensers",
+  instagramLink: "https://instagram.com/prisma.dispensers"
 };
+
+export const PLANS = [
+  {
+    id: 'hogar',
+    name: 'Plan Hogar',
+    price: 30000,
+    description: 'La solución perfecta para familias. Agua pura ilimitada sin preocupaciones.',
+    features: [
+      'Agua Fría y Caliente Ilimitada',
+      'Instalación 100% Bonificada',
+      'Mantenimiento Semestral Incluido',
+      'Servicio Técnico 24hs',
+      'Garantía de Pureza'
+    ],
+    recommended: true
+  }
+];
 
 export const FEATURES: Feature[] = [
   {

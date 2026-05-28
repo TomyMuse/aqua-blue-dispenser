@@ -1,14 +1,33 @@
-
 import React from 'react';
 import { Mail, Phone, Instagram, Send } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
 
 const ContactForm: React.FC = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const name = String(formData.get('name') || '').trim();
+    const phone = String(formData.get('phone') || '').trim();
+    const message = String(formData.get('message') || '').trim();
+
+    const whatsappMessage = `Hola Prisma Dispensers! Quiero hacer una consulta por un dispenser a red.
+
+Nombre: ${name}
+WhatsApp de contacto: ${phone}
+Consulta: ${message}`;
+
+    window.open(
+      `${CONTACT_INFO.whatsappLink}?text=${encodeURIComponent(whatsappMessage)}`,
+      '_blank',
+      'noopener,noreferrer',
+    );
+  };
+
   return (
     <section id="contacto" className="py-24 bg-white">
       <div className="container mx-auto px-6">
         <div className="bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
-          {/* Info Side */}
           <div className="lg:w-1/3 bg-sky-600 p-12 text-white flex flex-col justify-between">
             <div>
               <h2 className="text-4xl font-brand font-extrabold mb-6">Contactanos</h2>
@@ -56,41 +75,51 @@ const ContactForm: React.FC = () => {
             <div className="pt-12">
               <p className="text-sky-200 text-xs font-bold uppercase tracking-widest mb-4">Sello de Calidad</p>
               <div className="flex space-x-4">
-                 <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center font-bold">AB</div>
-                 <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center font-bold">ECO</div>
+                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center font-bold">AB</div>
+                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center font-bold">ECO</div>
               </div>
             </div>
           </div>
 
-          {/* Form Side */}
           <div className="flex-1 p-12 bg-white">
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-8" onSubmit={(e) => e.preventDefault()}>
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-8" onSubmit={handleSubmit}>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">Nombre</label>
-                <input 
-                  type="text" 
+                <label htmlFor="contact-name" className="text-sm font-bold text-slate-700 uppercase tracking-wide">Nombre</label>
+                <input
+                  id="contact-name"
+                  name="name"
+                  required
+                  type="text"
                   placeholder="Tu nombre"
+                  autoComplete="name"
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:ring-2 focus:ring-sky-500 outline-none transition-all"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">WhatsApp de contacto</label>
-                <input 
-                  type="tel" 
+                <label htmlFor="contact-phone" className="text-sm font-bold text-slate-700 uppercase tracking-wide">WhatsApp de contacto</label>
+                <input
+                  id="contact-phone"
+                  name="phone"
+                  required
+                  type="tel"
                   placeholder="Tu número"
+                  autoComplete="tel"
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:ring-2 focus:ring-sky-500 outline-none transition-all"
                 />
               </div>
               <div className="md:col-span-2 space-y-2">
-                <label className="text-sm font-bold text-slate-700 uppercase tracking-wide">Consulta por Dispenser a Red</label>
-                <textarea 
+                <label htmlFor="contact-message" className="text-sm font-bold text-slate-700 uppercase tracking-wide">Consulta por Dispenser a Red</label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  required
                   rows={4}
                   placeholder="Hola! Me interesa un dispenser para mi casa/oficina..."
                   className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 focus:ring-2 focus:ring-sky-500 outline-none transition-all resize-none"
                 ></textarea>
               </div>
               <div className="md:col-span-2 pt-4">
-                <button className="w-full md:w-auto bg-sky-600 hover:bg-sky-700 text-white px-12 py-4 rounded-full font-bold text-lg shadow-xl shadow-sky-600/20 flex items-center justify-center space-x-3 transition-transform active:scale-95">
+                <button type="submit" className="w-full md:w-auto bg-sky-600 hover:bg-sky-700 text-white px-12 py-4 rounded-full font-bold text-lg shadow-xl shadow-sky-600/20 flex items-center justify-center space-x-3 transition-transform active:scale-95">
                   <Send className="w-5 h-5" />
                   <span>Enviar Mensaje</span>
                 </button>

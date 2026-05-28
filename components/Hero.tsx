@@ -1,35 +1,43 @@
 
 import React from 'react';
 import { ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
-import { FluidParticlesBackground } from './ui/fluid-particles-background';
-import { CONTACT_INFO } from '../constants';
+import { FluidParticlesBackground } from './ui/fluid-particles-background.tsx';
+import { CONTACT_INFO } from '../constants.tsx';
 
 interface HeroProps {
   scrollProgress: number;
 }
 
 const Hero: React.FC<HeroProps> = ({ scrollProgress }) => {
+  const handleScrollToSection = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="inicio" className="relative min-h-screen">
       <header className="sr-only">
-        <h1>Aqua Blue: Dispenser de agua fría y caliente a red - SIN BIDONES</h1>
+        <h1>Prisma Dispensers: Dispenser de agua fría y caliente a red - SIN BIDONES</h1>
       </header>
       <FluidParticlesBackground className="min-h-screen">
         <div className="container mx-auto px-6 relative z-10 flex items-center min-h-screen pt-24 pb-12">
-          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-8 xl:gap-16 items-center w-full">
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-8 xl:gap-12 items-center w-full">
             
-            <div className="space-y-10 max-w-2xl text-left order-2 lg:order-1">
+            <div className="min-w-0 w-full max-w-xl space-y-8 text-left">
               <div className="inline-flex items-center space-x-3 bg-white/90 backdrop-blur-xl px-5 py-2.5 rounded-full border border-sky-100 shadow-sm animate-in fade-in slide-in-from-left-4 duration-700">
                 <ShieldCheck className="w-5 h-5 text-sky-500" />
-                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-slate-500">Tecnología Aqua Blue Eco</span>
+                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-slate-500">Tecnología Prisma Dispensers</span>
               </div>
               
               <div className="space-y-4">
-                <h2 className="text-5xl md:text-7xl lg:text-8xl font-brand font-extrabold leading-[1.05] tracking-tight text-slate-900 animate-in fade-in slide-in-from-left-6 duration-1000">
+                <h2 className="max-w-full break-words text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-brand font-extrabold leading-[1.05] tracking-tight text-slate-900 animate-in fade-in slide-in-from-left-6 duration-1000">
                   Agua Fría y Caliente <br />
                   <span className="text-sky-500 drop-shadow-sm">Calidad Premium.</span>
                 </h2>
-                <p className="text-xl text-slate-600 leading-relaxed max-w-lg font-medium animate-in fade-in slide-in-from-left-8 duration-1000 delay-150">
+                <p className="max-w-[34ch] sm:max-w-lg text-lg text-slate-600 leading-relaxed font-medium animate-in fade-in slide-in-from-left-8 duration-1000 delay-150">
                   Filtro conectado a la <strong>red de agua doméstica</strong>. La solución más económica, higiénica y moderna para tu día a día.
                 </p>
               </div>
@@ -43,31 +51,41 @@ const Hero: React.FC<HeroProps> = ({ scrollProgress }) => {
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-5 pt-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
+              <div className="flex w-full max-w-[34ch] flex-col gap-5 pt-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300 sm:max-w-none sm:flex-row">
                 <a 
-                  href={CONTACT_INFO.whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-slate-900 hover:bg-black text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all shadow-xl hover:shadow-sky-200 hover:-translate-y-1 flex items-center justify-center space-x-3"
+                  href="#planes"
+                  onClick={(e) => handleScrollToSection(e, 'planes')}
+                  className="w-full bg-slate-900 hover:bg-black text-white px-8 sm:px-10 py-5 rounded-2xl font-bold text-lg transition-all shadow-xl hover:shadow-sky-200 hover:-translate-y-1 flex items-center justify-center space-x-3 sm:w-auto"
                 >
                   <span>Pedir presupuesto</span>
                   <ArrowRight className="w-5 h-5" />
                 </a>
-                <button className="bg-white/70 hover:bg-white text-slate-900 px-10 py-5 rounded-2xl font-bold text-lg transition-all border border-slate-200 backdrop-blur-sm">
+                <a 
+                  href="#caracteristicas"
+                  onClick={(e) => handleScrollToSection(e, 'caracteristicas')}
+                  className="w-full bg-white/70 hover:bg-white text-slate-900 px-8 sm:px-10 py-5 rounded-2xl font-bold text-lg transition-all border border-slate-200 backdrop-blur-sm flex items-center justify-center text-center cursor-pointer sm:w-auto"
+                >
                   Ver Detalles
-                </button>
+                </a>
               </div>
             </div>
 
-            <div className="relative flex justify-center items-center lg:justify-end order-1 lg:order-2">
+            <div className="relative min-w-0 flex justify-center items-center lg:justify-end">
               <div className="absolute w-[140%] h-[140%] bg-sky-200/30 rounded-full blur-[140px] -z-10 animate-pulse"></div>
               
-              <div className="relative z-10 animate-dispenser-3d w-full max-w-[620px] lg:scale-110 xl:scale-125 transition-transform duration-1000">
+              <div className="relative z-10 animate-dispenser-3d w-full max-w-[540px] lg:scale-100 xl:scale-110 transition-transform duration-1000">
                 <div className="relative group p-4">
                   <div className="rounded-[3rem] transition-all duration-700">
+                    <div className="absolute left-1/2 top-[12%] z-20 -translate-x-1/2 rounded-full border border-sky-100 bg-white/95 px-4 py-2 text-center shadow-xl backdrop-blur-sm">
+                      <span className="block text-[10px] font-black uppercase tracking-[0.18em] text-slate-900">Prisma</span>
+                      <span className="block text-[9px] font-bold uppercase tracking-[0.14em] text-sky-600">Dispensers</span>
+                    </div>
                     <img 
                       src="https://i.postimg.cc/jR5CB7j3/Chat-GPT-Image-1-feb-2026-13-18-22.png" 
-                      alt="Dispenser de agua Aqua Blue - Frío Calor a Red" 
+                      alt="Dispenser de agua Prisma Dispensers - Frío Calor a Red" 
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
                       className="w-full h-auto object-contain transform transition-transform duration-1000 group-hover:scale-105 drop-shadow-[0_40px_70px_rgba(0,0,0,0.12)]"
                     />
                   </div>

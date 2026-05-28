@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
             <div className="flex items-center space-x-2">
               <Droplet className="text-sky-500 w-8 h-8" fill="currentColor" />
               <span className="text-2xl font-brand font-extrabold tracking-tight uppercase">
-                AQUA <span className="text-sky-500">BLUE</span>
+                PRISMA <span className="text-sky-500">DISPENSERS</span>
               </span>
             </div>
             <p className="text-slate-400 max-w-sm leading-relaxed">
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="pt-12 border-t border-slate-800 flex flex-col md:row justify-between items-center text-slate-500 text-sm">
-          <p>© {new Date().getFullYear()} Aqua Blue Eco. Agua Pura Infinita.</p>
+          <p>© {new Date().getFullYear()} Prisma Dispensers. Agua Pura Infinita.</p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <span>Buenos Aires, Argentina</span>
           </div>

@@ -1,7 +1,6 @@
-
 import React from 'react';
-import { SPECS } from '../constants';
-import { ShieldCheck, Activity, Clock, Droplets, Zap } from 'lucide-react';
+import { SPECS } from '../constants.tsx';
+import { ShieldCheck, Activity, Clock, Zap } from 'lucide-react';
 
 const ProductDetail: React.FC = () => {
   return (
@@ -15,54 +14,80 @@ const ProductDetail: React.FC = () => {
                 Diseño que Refleja <br /> <span className="text-sky-600">Pureza Absoluta.</span>
               </h2>
               <p className="text-xl text-slate-600 leading-relaxed font-medium">
-                Nuestros dispensers Aqua Blue combinan una estética moderna con la tecnología de filtrado más avanzada del mercado. Olvidate de la logística de bidones y disfrutá de agua fresca siempre.
+                Nuestros dispensers <strong className="text-slate-900">Prisma Dispensers</strong> combinan una estética moderna con la tecnología de filtrado más avanzada del mercado. Olvidate de la logística de bidones y disfrutá de agua fresca siempre.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-               <div className="flex space-x-5 group">
-                  <div className="p-4 bg-sky-50 rounded-2xl h-fit border border-sky-100 group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
-                    <Activity className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg text-slate-900">Filtrado Profesional</h4>
-                    <p className="text-slate-500 text-sm leading-relaxed">Elimina sedimentos, cloro y sabores desagradables al instante.</p>
-                  </div>
-               </div>
-               <div className="flex space-x-5 group">
-                  <div className="p-4 bg-slate-50 rounded-2xl h-fit border border-slate-100 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300">
-                    <Zap className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-lg text-slate-900">Alto Rendimiento</h4>
-                    <p className="text-slate-500 text-sm leading-relaxed">Enfriamiento rápido y agua caliente a temperatura constante.</p>
-                  </div>
-               </div>
+              <div className="flex space-x-5 group">
+                <div className="p-4 bg-sky-50 rounded-2xl h-fit border border-sky-100 group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
+                  <Activity className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg text-slate-900">Filtrado Profesional</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed">Elimina sedimentos, cloro y sabores desagradables al instante.</p>
+                </div>
+              </div>
+
+              <div className="flex space-x-5 group">
+                <div className="p-4 bg-sky-50 rounded-2xl h-fit border border-sky-100 group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
+                  <Zap className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg text-slate-900">Eficiencia Energética</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed">Tecnología de bajo consumo para agua fría y caliente.</p>
+                </div>
+              </div>
+
+              <div className="flex space-x-5 group">
+                <div className="p-4 bg-sky-50 rounded-2xl h-fit border border-sky-100 group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg text-slate-900">Máxima Higiene</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed">Circuito cerrado que impide la contaminación externa.</p>
+                </div>
+              </div>
+
+              <div className="flex space-x-5 group">
+                <div className="p-4 bg-sky-50 rounded-2xl h-fit border border-sky-100 group-hover:bg-sky-500 group-hover:text-white transition-all duration-300">
+                  <Clock className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg text-slate-900">Larga Vida Útil</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed">Materiales robustos diseñados para uso intensivo.</p>
+                </div>
+              </div>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {SPECS.map((spec, i) => (
-                <div key={i} className="p-5 glass rounded-2xl border-white/80 hover:border-sky-200 transition-colors shadow-sm">
-                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1">{spec.label}</span>
-                  <span className="block text-xs font-bold text-slate-800">{spec.value}</span>
-                </div>
-              ))}
+            <div className="pt-8 border-t border-slate-200">
+              <h3 className="font-bold text-slate-900 mb-6 uppercase tracking-widest text-sm">Especificaciones</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+                {SPECS.map((spec, i) => (
+                  <div key={i}>
+                    <p className="text-xs font-bold text-slate-400 uppercase tracking-wide mb-1">{spec.label}</p>
+                    <p className="font-semibold text-slate-700">{spec.value}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="lg:w-1/2 relative">
-            <div className="relative z-10 p-2 glass rounded-[4rem] border-white/80 shadow-2xl overflow-hidden group bg-white/40">
-               <div className="bg-white rounded-[3.5rem] overflow-hidden p-8 flex justify-center">
-                  <img 
-                    src="https://i.postimg.cc/jR5CB7j3/Chat-GPT-Image-1-feb-2026-13-18-22.png" 
-                    alt="Detalle Dispenser Aqua Blue" 
-                    className="w-full h-auto object-contain transform transition-transform duration-1000 group-hover:scale-110 drop-shadow-xl"
-                  />
-               </div>
+          <div className="lg:w-1/2 relative flex justify-center">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-sky-100/50 rounded-full blur-[80px] -z-10"></div>
+            <div className="relative w-full max-w-md">
+              <div className="absolute left-1/2 top-[9%] z-20 -translate-x-1/2 rounded-full border border-sky-100 bg-white/95 px-4 py-2 text-center shadow-xl backdrop-blur-sm">
+                <span className="block text-[10px] font-black uppercase tracking-[0.18em] text-slate-900">Prisma</span>
+                <span className="block text-[9px] font-bold uppercase tracking-[0.14em] text-sky-600">Dispensers</span>
+              </div>
+              <img 
+                src="https://i.postimg.cc/jR5CB7j3/Chat-GPT-Image-1-feb-2026-13-18-22.png" 
+                alt="Dispenser de agua purificada frío calor sin bidón diseño moderno y estético" 
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700"
+              />
             </div>
-            {/* Decoración de fondo */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-sky-400/10 rounded-full blur-3xl -z-10"></div>
-            <span className="absolute -bottom-16 -right-16 text-[10rem] font-brand font-black text-slate-900/[0.02] -z-10 select-none">BLUE</span>
           </div>
 
         </div>
